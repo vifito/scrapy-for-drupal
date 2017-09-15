@@ -2,7 +2,7 @@
 
 import scrapy
 
-class DrupaldayItem(scrapy.Item):
+class GdgourenseItem(scrapy.Item):
 
     url = scrapy.Field()
     title = scrapy.Field()

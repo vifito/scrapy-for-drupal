@@ -7,17 +7,16 @@
 /**
  * Implements hook_drush_command().
  */
-function drupalday_drush_command() {
+function gdgourense_drush_command() {
 
-  $items['dd-import'] = array(
-    'callback' => '_drupalday_import',
-    'description' => 'Importar contenidos en ejemplo Drupalday.',
-    'aliases' => array('ddi'),
+  $items['gdgourense-import'] = array(
+    'callback' => '_gdgourense_import',
+    'description' => 'Importar contidos de exemplo.',
     'arguments' => array(
-      'input' => 'Fichero JSON con datos a cargar.',
+      'input' => 'Ficheiro JSON cos datos a cargar.',
     ),
     'options' => array(
-      'assets' => 'Ruta al directorio de assets (files e images)',
+      'assets' => 'Ruta ao directorio de assets (files e images)',
     ),
   );
 
@@ -30,36 +29,36 @@ function drupalday_drush_command() {
  *   Scrapy:
  *     scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
  *   Drush:
- *     drush ddi drupal.json --assets=./assets
+ *     drush gdgourense-import drupal.json --assets=./assets
  *
  * @param $input
  * @param $assets
  * @return bool
  */
-function _drupalday_import($input) {
+function _gdgourense_import($input) {
 
   if (!file_exists($input)) {
-    return drush_set_error('FILE_NOT_FOUND', sprintf('El fichero %s no existe', $input));
+    return drush_set_error('FILE_NOT_FOUND', sprintf('O ficheiro %s non existe', $input));
   }
 
   $assets = drush_get_option('assets', './assets');
   if(!is_dir($assets)) {
-    return drush_set_error('ASSETS_NOT_FOUND', sprintf('El directorio de assets %s no existe', $assets));
+    return drush_set_error('ASSETS_NOT_FOUND', sprintf('O directorio de assets %s non existe', $assets));
   }
 
   $data = file_get_contents($input);
   $data = json_decode($data, True);
 
   if (!is_array($data)) {
-    return drush_set_error('IMPORT_DATA_CORRUPTED', 'Los datos importados están corruptos');
+    return drush_set_error('IMPORT_DATA_CORRUPTED', 'Os datos importados están corruptos (sé fuerte!)');
   }
 
-  // Definir por si existen limitaciones en el servidor
+  // Definir por se existen limitacións no servidor
   ini_set('memory_limit', '256M');
 
-  // Crear los nodos
+  // Crear os nodos
   foreach($data as $item) {
-    // <editor-fold desc="values">
+    // <editor-fold desc="comúns">
     $values = [
       'type'     => 'page',
       'title'    => $item['title'],
@@ -80,7 +79,7 @@ function _drupalday_import($input) {
     ];
     // </editor-fold>
 
-    // <editor-fold desc="field_fe_image">
+    // <editor-fold desc="imaxe">
     if(isset($item['images']) && count($item['images']) > 0) {
       $dir = 'public://full';
       if(!file_prepare_directory($dir)) {
@@ -100,7 +99,7 @@ function _drupalday_import($input) {
 
         $imagename = realpath($assets . '/images/' . $img['path']);
         if(!file_exists($imagename)) {
-          drush_log('Imagen ' . $imagename . ' no existe.', 'error');
+          drush_log('Imaxe ' . $imagename . ' non existe.', 'error');
           continue;
         }
 
@@ -110,14 +109,14 @@ function _drupalday_import($input) {
         $wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($path);
         $externalUrl = $wrapper->getExternalUrl();
 
-        // Si se exjecuta sin alias no puede determinar la baseUrl
+        // Si se executa sen alias non pode determinar a baseUrl
         if(preg_match('@^http://default@', $externalUrl)) {
           $externalUrl = preg_replace('@^http://default@', '', $externalUrl);
         }
 
         // Remprazar nos contidos
         $values['body']['value'] = preg_replace_callback(
-          '@<img(?P<pre>[^>]*?)src=["\']' . preg_quote($img['url']) . '["\'](?P<post>[^>]*?)>@',
+          '@<img(?P<pre>[^>]*?)src=["\']' . preg_quote($img['url'], '@') . '["\'](?P<post>[^>]*?)>@',
           function($matches) use($externalUrl) {
             $attrs = preg_replace('/ alt=[\"\'].*?[\"\']/', '', $matches['pre'] . ' ' . $matches['post']);
             $img = '<img src="' . $externalUrl . '" alt="" '. $attrs . ' />';

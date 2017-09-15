@@ -1,0 +1,5 @@
+name: gdgourense
+type: module
+description: Módulo para o GDG Ourense
+core: 8.x
+package: Vifito

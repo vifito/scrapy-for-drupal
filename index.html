@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html lang="gl">
 
   <head>
     <meta charset="utf-8">
 
-    <title>Scraping de contenidos e integración en Drupal 8</title>
+    <title>Scraping de contidos e integración en Drupal 8</title>
 
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/custom/favicon/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/custom/favicon/apple-touch-icon-114x114.png" />
@@ -25,7 +25,7 @@
     <meta name="msapplication-square150x150logo" content="assets/custom/favicon/mstile-150x150.png" />
     <meta name="msapplication-square310x310logo" content="assets/custom/favicon/mstile-310x310.png" />
 
-    <meta name="description" content="Scraping de contenidos e integración en Drupal 8">
+    <meta name="description" content="Scraping de contidos e integración en Drupal 8">
     <meta name="author" content="vifito">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,13 +64,13 @@
       <div class="slides">
         <section>
           <section>
-            <h1>Scraping de contenidos e integración en Drupal8</h1>
+            <h1>Scraping de contidos e integración en Drupal8</h1>
             <p>
               <em>Tomás Vilariño Fidalgo</em><br/>
 
               <small>
-                Ingeniero Informático <small>(UVigo)</small><br/>
-                Técnico Especialista en Desarrollo Web <small>(UJI)</small><br/>
+                Enxeñeiro en Informática <small>(UVigo)</small><br/>
+                Técnico Especialista en Desenvolvemento Web <small>(UJI)</small><br/>
               </small>
             </p>
 
@@ -82,14 +82,13 @@
           </section>
 
           <section data-background="assets/custom/images/oficina-web.jpg">
-            <h2>Trabajo en</h2>
-            <h3><i class="fa fa-home" aria-hidden="true"></i> Oficina Web de la <abbr title="Universidad de Santiago de Compostela">USC</abbr></h3>
-            <p>
-              actualmente en la migración de la web <a href="http://www.usc.es">www.usc.es</a> a Drupal 8.
-            </p>
+            <h2>Traballo na</h2>
+            <h3><i class="fa fa-home" aria-hidden="true"></i> Oficina Web da <abbr title="Universidade de Santiago de Compostela">USC</abbr></h3>
+            <!-- <p>
+              como <br/>Técnico especialista informática <br/> Especialidade desenvolvemento de sistemas
+            </p> -->
           </section>
         </section>
-
 
         <!--<section>
           <h2>Agenda</h2>
@@ -105,39 +104,39 @@
 
         <section>
           <h2>Situación actual</h2>
+          <div class="">
+
+          </div>
           <p class="fragment grow">Migración web USC.es</p>
-          <p class="fragment grow">Sitio con miles de páginas</p>
-          <p class="fragment grow">Nos centramos en exportar páginas "estáticas"</p>
-          <p class="fragment grow">Compleja exportación datos</p>
-          <p class="fragment grow">Mantener misma estructura navegación (SEO)</p>
+          <p class="fragment grow">Sitio con miles de páxinas</p>
+          <p class="fragment grow">Exportar páxinas "estáticas"</p>
+          <p class="fragment grow">Complexa exportación datos</p>
+          <p class="fragment grow">Manter a mesma estrutura navegación (SEO)</p>
         </section>
 
         <section>
-          <h2>Primera idea</h2>
-          <p>Utilizar soluciones de exportación del CMS actual, o acceso directo a base de datos</p>
+          <h2>Primeira idea</h2>
+          <p>Utilizar solucións de exportación do CMS actual (OpenCMS), ou acceso directo á base de datos</p>
           <p>
             <strong class="fragment fade-in">Problemas</strong>
             <ul>
-              <li class="fragment fade-in">Acceso a base de datos implica "gestiones" con departamento de sistemas</li>
-              <li class="fragment fade-in">Desconocimiento estructura base de datos, elevada curva de aprendizaje</li>
-              <li class="fragment fade-in">El actual CMS utiliza un sistema de ficheros en base de datos (VFS)</li>
+              <li class="fragment fade-in">Descoñecemento da estrutura da base de datos, elevada curva de aprendizaxe</li>
+              <li class="fragment fade-in">O actual CMS emprega un sistema de ficheiros en base de datos (VFS)</li>
+              <li class="fragment fade-in">Outros sitios "satélite" que compre integrar (Xornal, Campus Terra, ...)</li>
             </ul>
           </p>
-
-          <aside class="notes">
-            Es posible montar el VFS por medio de SMB/CIFS o usando CMIS
-          </aside>
         </section>
 
         <section>
           <h2>Segunda idea</h2>
-          <p>Acceder directamente a través de la web y extraer los contenidos (scraping).</p>
+          <p>Acceder directamente a través da web e extraer os contidos (scraping).</p>
+          <p>OLLO! falamos de integración dos contidos "estáticos". O resto de contidos son integrados vía servizos web.</p>
         </section>
 
         <section>
-          <h2>Prueba de concepto I</h2>
+          <h2>Proba de concepto I</h2>
           <p>
-            Utilizar <strong>Goutte</strong> para recuperar y extraer contenidos.<br/>Insertar en Drupal a través de un comando <strong>Drush</strong> usando Entity API.<br/> Todo implementado en <strong>PHP</strong> con componentes alternativos <strong>Guzzle</strong> y <strong>DOMCrawler</strong>.
+            Empregar <strong>Goutte</strong> para recuperar e extraer contidos.<br/>Insertar en Drupal a través dun comando <strong>Drush</strong> empregando Entity API.<br/> Todo implementado en <strong>PHP</strong> con componentes alternativos <strong>Guzzle</strong> e <strong>DOMCrawler</strong>.
           </p>
           <p>
             <img src="assets/custom/images/php.png" alt="" border="0" />
@@ -148,51 +147,51 @@
         </section>
 
         <section>
-          <h2>Prueba de concepto I (inconvenientes)</h2>
+          <h2>Proba de concepto I (inconvintes)</h2>
           <p class="fragment fade-in">
-            La idea funciona para una páxina pero presenta inconvenientes para rastrear todo un sitio.
+            A idea funciona para unha páxina pero presenta inconvientes para rastrexar todo un sitio.
           </p>
           <p>
-            <strong class="fragment fade-in">Es necesario implementar:</strong>
+            <strong class="fragment fade-in">Faise necesario implementar:</strong>
 
             <ul>
-              <li class="fragment fade-in">Gestión de la cola de peticiones pendientes</li>
-              <li class="fragment fade-in">Rastreo de enlaces y gestión de duplicados</li>
-              <li class="fragment fade-in">Almacenamiento de los contenidos extraídos</li>
-              <li class="fragment fade-in">Procesamiento multihilo</li>
-              <li class="fragment fade-in">Gestión jobs: pausing and resuming crawls</li>
-              <li class="fragment fade-in">Estadísticas, tratamiento imágenes, ficheros, gestión de redirecciones, errores 500...</li>
+              <li class="fragment fade-in">Xestión da cola de peticións pendentes</li>
+              <li class="fragment fade-in">Rastrexo de ligazóns e xestión de duplicados</li>
+              <li class="fragment fade-in">Almacenamento dos contidos extraídos</li>
+              <li class="fragment fade-in">Procesamento multifío</li>
+              <li class="fragment fade-in">Xestión jobs: pausing and resuming crawls</li>
+              <li class="fragment fade-in">Estatísticas, tratamento imaxes, ficheiros, xestión de redireccións, erros 500...</li>
             </ul>
           </p>
 
           <aside class="notes">
-            - Importante controlar el código de estado y los content-types de retorno
-            - Los ficheros en OpenCMS están en el VFS
-            - Las imágenes están en miniaturas (queremos originales)
+            - Importante controlar o código de estado e os content-types de retorno
+            - Os ficheiros no OpenCMS están no VFS
+            - A imaxes están en miniatura (queremos os orixinais)
           </aside>
         </section>
 
         <section>
-          <h2>Prueba de concepto II</h2>
+          <h2>Proba de concepto II</h2>
           <p>
-            Necesitamos algo más que un API de scraping de páginas.
+            Precisamos algo máis que unha API de scraping de páxinas.
 
             <ul>
-              <li class="fragment fade-in">Scraping, extracción de contenidos</li>
-              <li class="fragment fade-in">Crawling, bot para seguir la navegación</li>
-              <li class="fragment fade-in">Storing, almacenar los contenidos</li>
-              <li class="fragment fade-in">Plumbing, otras tareas de «fontanería»</li>
+              <li class="fragment fade-in">Scraping, extracción de contidos</li>
+              <li class="fragment fade-in">Crawling, bot para seguir a navegación</li>
+              <li class="fragment fade-in">Storing, almacenar os contidos</li>
+              <li class="fragment fade-in">Plumbing, outras tarefas de «fontanería»</li>
             </ul>
           </p>
         </section>
 
         <section>
-          <h2>Prueba de concepto II</h2>
+          <h2>Proba de concepto II</h2>
           <p>
             <img src="assets/custom/images/scrapy-big-logo.png" data-unbordered="true" alt="" align="right" />
-            Encontramos un framework más completo centrado en la programación de arañas.
+            Atopamos un framework máis completo centrado na programación de arañas.
             <br/>
-            Usamos framework Scrapy y obtenemos contenidos en formato JSON. Posteriormente con Drush los integramos en Drupal.
+            Empregamos o framework Scrapy e obtenemos contidos en formato JSON. Posteriormente con Drush os integrámolos en Drupal.
           </p>
           <p>
             <img src="assets/custom/images/solucionII.png" data-unbordered="true" alt="" border="0" />
@@ -207,7 +206,7 @@
             <img src="assets/custom/images/nivel-python.png" data-unbordered="true" alt="" />
           </p>
           <p>
-            Mi nivel de Python es bajo (tirando a nulo), sin embargo en una tarde estás programando arañas.
+            O meu nivel de Python é baixo (tirando a nulo), sen embargo nunha tarde estás programando arañas.
           </p>
         </section>
 
@@ -215,14 +214,14 @@
           <section>
             <h2>Instalación framework scraping (Scrapy)</h2>
             <p>
-              Instalamos scrapy usando <code>pip</code>
+              Instalación de scrapy empregando <code>pip</code>
             </p>
             <pre><code class="hljs bash" data-trim contenteditable>
 sudo pip install scrapy
             </code></pre>
 
             <p class="fragment fade-in">
-              Usamos el gestor de paquetes de Python <a href="https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)">pip</a>
+              Empregamos o xestor de paquetes de Python <a href="https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)">pip</a>
               <br/>
               <img src="assets/custom/images/pip.png" data-unbordered="true" alt="" border="0" />
             </p>
@@ -241,17 +240,17 @@ sudo apt-get install python-dev python-pip libxml2-dev \
 
 
         <section>
-          <h2>Probamos instalación de scrapy</h2>
+          <h2>Probamos a instalación de scrapy</h2>
           <p>
             <img src="assets/custom/images/scrapy-cmd.png" data-unbordered="true" alt="" />
           </p>
         </section>
 
         <section>
-          <h2>Iniciamos proyecto de scrapy</h2>
+          <h2>Iniciamos proxecto de scrapy</h2>
 
           <p>
-            Creamos un proyecto de scrapy con la opción <code>startproject</code>
+            Creamos un proxecto de scrapy coa opción <code>startproject</code>
           </p>
 
           <pre><code class="hljs bash">
@@ -260,15 +259,15 @@ $ scrapy startproject usc
         </section>
 
         <section>
-          <h2>Estructura del proyecto</h2>
+          <h2>Estrutura do proxecto</h2>
           <pre>
 .
-├── scrapy.cfg   → Fichero de scrapy (nombre de proyecto)
+├── scrapy.cfg   → Ficheiro de scrapy (nome do proxecto)
 └── paxinas
     ├── __init__.py
-    ├── items.py   → Clase con la definición de los ítems a extraer
+    ├── items.py   → Clase coa definición dos ítems a extraer
     ├── pipelines.py   → Clase que procesa, valida, almacena, ... ítems
-    ├── settings.py   → Configuración de opciones del proyecto
+    ├── settings.py   → Configuración de opcións do proxecto
     └── spiders
         └── __init__.py
           </pre>
@@ -276,13 +275,13 @@ $ scrapy startproject usc
 
         <section>
           <section>
-            <h2>Crear una araña</h2>
+            <h2>Crear unha araña</h2>
 
             <p>
-              Desde línea de comandos podemos crear el "esqueleto" de la araña con la opción <code>genspider</code>
+              Dende líña de comandos podemos crear o "esquelete" da araña coa opción <code>genspider</code>
             </p>
 
-            <p>Scrapy viene con varias plantillas para implementar arañas.</p>
+            <p>Scrapy vén con varios modelos para implementar arañas.</p>
 
             <pre><code class="hljs bash">
   $ scrapy genspider --list
@@ -299,23 +298,23 @@ $ scrapy startproject usc
 
             <dl>
               <dt>basic</dt>
-              <dd>La clase hereda de <code>scrapy.Spider</code>, es la implementación más sencilla. </dd>
+              <dd>A clase herda de <code>scrapy.Spider</code>, é a implementación máis sinxela. </dd>
 
               <dt>crawl</dt>
-              <dd>La clase hereda de <code>scrapy.CrawlSpider</code>. Por medio de unas reglas busca enlaces y los pone en la cola.</dd>
+              <dd>A clase herda de <code>scrapy.CrawlSpider</code>. Por medio dunhas regras busca ligazóns e vai enchendo a cola.</dd>
 
               <dt>xmlfeed</dt>
-              <dd>La clase hereda de <code>XMLFeedSpider</code>. Diseñado para parsear feeds XML.</dd>
+              <dd>A clase herda de <code>XMLFeedSpider</code>. Deseñada para parsear feeds XML.</dd>
 
               <dt>csvfeed</dt>
-              <dd>La clase hereda de <code>XMLFeedSpider</code>. Similar a XMLFeedSpider para documentos CSV.</dd>
+              <dd>A clase herda de <code>XMLFeedSpider</code>. Similar a XMLFeedSpider para documentos CSV.</dd>
             </dl>
           </section>
         </section>
 
         <section>
           <section>
-            <h2>Crear una araña II</h2>
+            <h2>Crear unha araña II</h2>
 
             <pre><code class="hljs bash">
 $ scrapy genspider -t crawl paxinas
@@ -323,7 +322,7 @@ $ scrapy genspider -t crawl paxinas
           </section>
 
           <section>
-            <h2>Código de la clase generada</h2>
+            <h2>Código da clase xerada</h2>
 
             <pre><code class="hljs python">
 import scrapy
@@ -344,7 +343,7 @@ class PaxinasSpider(CrawlSpider):
           </section>
 
           <section>
-            <h2>Definimos nuestras reglas</h2>
+            <h2>Definimos as nosas regras</h2>
 
             <pre><code class="hljs python">
 rules = (
@@ -365,7 +364,7 @@ rules = (
         <section>
           <h2>Ítems a extraer (items.py)</h2>
 
-          <p>Definimos clase <code>PaxinasItem</code> con los campos que vamos a recuperar.</p>
+          <p>Definimos clase <code>PaxinasItem</code> cos campos que imos a recuperar.</p>
 
           <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
         </section>
@@ -395,8 +394,8 @@ rules = (
             </tr>
             </tbody>
           </table>
-          
-          <p>También con expresiones regulares <code>response.re()</code>.(*) Portia, proyecto que permite extraer de forma visual.</p>
+
+          <p>Tamén con expresións regulares <code>response.re()</code>.</p>
         </section>
 
         <section data-background-video="./assets/custom/scrapy-shell.webm" data-background-color="#FFFFFF">
@@ -405,13 +404,13 @@ rules = (
 
         <section>
           <h2>Implementamos parse_item</h2>
-          <p>Utilizamos <code>scrapy shell</code> para hacer pruebas de los selectores</p>
+          <p>Empregamos <code>scrapy shell</code> para facer probas dos selectores</p>
 
           <pre><code class="hljs python" data-trim contenteditable>
 class PaxinasSpider(CrawlSpider):
   # ....
   def parse_item(self, response):
-    # Comprobaciones: 'text/html' not in response.headers['Content-Type']
+    # Comprobacións: 'text/html' not in response.headers['Content-Type']
 
     item = PaxinasItem()
     item['url'] = response.url
@@ -419,7 +418,7 @@ class PaxinasSpider(CrawlSpider):
     item['body'] = response.body
     item['keywords'] = response.xpath('//meta[@name="keywords"]/@content')
             .extract_first()
-    # Búsqueda de imágenes y ficheros
+    # Búsqueda de imaxes e ficheiros
     # ....
     item['image_urls'] = images
     item['files_urls'] = files
@@ -428,9 +427,9 @@ class PaxinasSpider(CrawlSpider):
         </section>
 
         <section>
-          <h2>Configurar pipelines ficheros e imágenes</h2>
+          <h2>Configurar pipelines ficheiros e imaxes</h2>
 
-          <p>Necesitamos configurar <code>ITEM_PIPELINES</code> para dispones del comportamiento automático de los campos <code>image_urls</code> y <code>file_urls</code>.</p>
+          <p>Precisamos configurar <code>ITEM_PIPELINES</code> para dispoñer do comportamento automático dos campos <code>image_urls</code> e <code>file_urls</code>.</p>
 
           <pre><code class="hljs python" data-trim contenteditable>
 ITEM_PIPELINES = {
@@ -445,8 +444,8 @@ FILES_STORE  = dir + '/../assets/files'
         </section>
 
         <section>
-          <h2>Ejecutamos crawler</h2>
-          <p>Lanzamos para que guarde en formato json (-o xerencia.json), con parámetros adicionales (-a), incluimos la opción de parar y reanudar el crawler (-s JOBDIR) y guardanmos un log.</p>
+          <h2>Executamos crawler</h2>
+          <p>Lanzamos para que garde en formato json (-o xerencia.json), con parámetros adicionais (-a), incluímos a opción de parar e reanudar o crawler (-s JOBDIR) e gardamos un log.</p>
           <pre><code class="hljs python" data-trim contenteditable>
 scrapy crawl paxinas -o xerencia.json \
     -a start_url='http://www.usc.es/gl/goberno/xerencia/' \
@@ -458,12 +457,12 @@ scrapy crawl paxinas -o xerencia.json \
 
         <section>
           <h2>Mapeo de campos</h2>
-          <p>Tenemos que mapear los campos del documento JSON a los campos del tipo de contenido.</p>
+          <p>Temos que mapear os campos do documento JSON aos campos do tipo de contido.</p>
           <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
         </section>
 
         <section>
-          <h2>Estructura JSON</h2>
+          <h2>Estrutura JSON</h2>
           <p>(versión reducida)</p>
           <pre><code class="hljs json">[{
   "title": "Servizo de Xestión Académica - USC",
@@ -483,7 +482,7 @@ scrapy crawl paxinas -o xerencia.json \
 
         <section>
           <h2>Integrar en Drupal I</h2>
-          <p>Creamos un módulo con un fichero <code>module_name.drush.inc</code></p>
+          <p>Creamos un módulo cun ficheiro <code>module_name.drush.inc</code></p>
           <pre><code class="hljs php" data-trim contenteditable>
 /**
  * Implements hook_drush_command().
@@ -491,24 +490,24 @@ scrapy crawl paxinas -o xerencia.json \
 function usc_front_drush_command() {
   $items['fe-import-pages'] = [
     'callback' => 'usc_front_import_pages',
-    'description' => 'Importar páginas del sitio USC.es (formato JSON).',
+    'description' => 'Importar páxinas do sitio USC.es (formato JSON).',
     'aliases' => array('feip'),
     'arguments' => [
-      'input' => 'Fichero JSON con el contenido de las páginas a cargar.',],
+      'input' => 'Ficheiro JSON co contido das páxinas a cargar.',],
     'options' => [
-      'assets' => 'Ruta al directorio de assets (files e images)',
-      'menu_name' => 'Nombre del menú a generar',
+      'assets' => 'Ruta ao directorio de assets (files e images)',
+      'menu_name' => 'Nome do menú a xerar',
     ],
   ];
 }</code></pre>
           <aside class="notes">
-            - Ejecutar Drush con el alias del sitio (@local). Necesario para construír bien los enlaces.
+            - Executar Drush co alias do sitio (@local). Necesario para construír ben as ligazóns.
           </aside>
         </section>
 
         <section>
           <h2>Integrar en Drupal II</h2>
-          <p>Recorrer los ítems del array json e ir insertando el contenido</p>
+          <p>Recorrer os ítems do array json e ir inserindo o contido</p>
           <pre><code class="hljs php" data-trim contenteditable>
 $data = json_decode(file_get_contents($input), TRUE);
 /** @var \Drupal\Core\Path\AliasStorage $aliasStorage */
@@ -529,13 +528,13 @@ foreach($data as $item) {
         </section>
 
         <section>
-          <h2>Ficheros gestionados</h2>
-          <p>Recorrer arrays de <code>images</code> y <code>files</code>, y damos de alta en Drupal (tabla: file_managed)</p>
+          <h2>Ficheiros xestionados</h2>
+          <p>Recorrer arrays de <code>images</code> e <code>files</code>, e damos de alta en Drupal (táboa: file_managed)</p>
           <pre><code class="hljs php" data-trim contenteditable>
 foreach($item['images'] as $img) {
   $path = 'public://' . $img['url'];
   $imagename = realpath($assets . '/images/' . $img['path']);
-  // validaciones omitidas, file_exists, ...
+  // validacións omitidas, file_exists, ...
   $image_stream = file_get_contents($imagename);
   if(!file_prepare_directory(dirname($path))) {
     drupal_mkdir($dir, NULL, True);
@@ -546,16 +545,16 @@ foreach($item['images'] as $img) {
     'target_id' => $file->id(),
     'alt' => $alternativeText,
   ];
-  // Reemplazar los href en el contenido ($values['body'])
+  // Remprazar os href no contido ($values['body'])
 }
-$values['field_fe_image'] = $image_id; // array con los IDs de las imágenes
+$values['field_fe_image'] = $image_id; // array cos IDs das imáxes
           </code></pre>
         </section>
 
         <section>
-          <h2>Otros campos (taxonomías)</h2>
+          <h2>Outros campos (taxonomías)</h2>
 
-          <p>Crear taxonomías para campo <code>keywords</code></p>
+          <p>Crear taxonomías para o campo <code>keywords</code></p>
 
           <pre><code class="hljs php" data-trim contenteditable>
 $terms = explode(',', $item['keywords']);
@@ -580,10 +579,10 @@ $values['field_fe_keywords'] = $tids;</code></pre>
         <section>
           <h2>Integrar con menús I</h2>
 
-          <p>Comprobar que existe un menú, sino crearlo</p>
+          <p>Comprobar que existe un menú, senón crealo</p>
 
           <pre><code class="hljs php" data-trim contenteditable>
-// $menu_name → nombre del menú
+// $menu_name → nome do menú
 $nids = \Drupal::entityQuery('menu')
   ->condition('id', $menu_name)->execute();
 
@@ -604,7 +603,7 @@ if (empty($nids)) { // Crear menú si no existe
         <section>
           <h2>Integrar con menús II</h2>
 
-          <p>Crear ítems del menú</p>
+          <p>Crear ítems do menú</p>
 
           <pre><code class="hljs php" data-trim contenteditable>
 // Comprobar se xa existe
@@ -627,11 +626,12 @@ if (count($nids) === 0) {
         </section>
 
         <section>
-          <h2>Otras alternativas</h2>
+          <h2>Outras alternativas</h2>
           <p>
             <ul>
-              <li class="fragment fade-in">Usar el módulo migrate para integrar los contenidos.</li>
-              <li class="fragment fade-in">Insertar desde código Python los contenidos directamente en la base de datos.</li>
+              <li class="fragment fade-in">Empregar o módulo migrate para cargar os contidos.</li>
+              <li class="fragment fade-in">Insertar dende código Python os contidos directamente na base de datos.</li>
+              <li class="fragment fade-in">Publicar os servizos REST de Drupal e dende código Python insertar vía REST.</li>
             </ul>
           </p>
         </section>
@@ -682,46 +682,51 @@ MONGODB_COLLECTION = "paxinas"
         </section>
 
         <section>
-          <h2>BONUS: Try yourself</h2>
+          <h2>Portia</h2>
+          <p>Portia, proxecto que permite extraer de forma visual.</p>
+        </section>
+
+        <section>
+          <h2>Faino ti mesmo</h2>
 
           <p>
             <img src="assets/custom/images/Octocat.jpg" data-unbordered="true" alt="" width="100" />
           </p>
 
           <p class="fragment fade-in">
-            Esta presentación está disponible en: <a href="https://vifito.github.io/drupalday2016/">vifito.github.io/drupalday2016/</a>
+            Esta presentación está dispoñible en: <a href="https://vifito.github.io/scrapy-for-drupal/">vifito.github.io/scrapy-for-drupal/</a>
           </p>
 
           <p class="fragment fade-in">
-            También el repositorio con: <a href="https://github.com/vifito/drupalday2016">github.com/vifito/drupalday2016</a>
+            E no repositorio: <a href="https://github.com/vifito/scrapy-for-drupal">github.com/vifito/scrapy-for-drupal</a>
           </p>
 
           <pre class="fragment fade-in"><code data-trim contenteditable>
-github.com/vifito/drupalday2016
+github.com/vifito/scrapy-for-drupal
 └── demo
     ├── module
-    │   └── drupalday
+    │   └── scrapy
     └── scrapy
-        └── drupalday
+        └── scrapy
 
             </code></pre>
         </section>
 
         <section>
-          <h2>BONUS: Try yourself (demo)</h2>
+          <h2>Faino ti mesmo</h2>
 
           <p>
-            La demo incluye <strong>una araña con Scrapy</strong> que recupera los artículos de Drupal 8 de Sitepoint (https://www.sitepoint.com/tag/drupal-8/). Y un <strong>módulo de Drupal</strong> para insertar los artículos.
+            A demo inclúe <strong>unha araña con Scrapy</strong> que recupera os artigos de Drupal 8 de Sitepoint (https://www.sitepoint.com/tag/drupal-8/). E un <strong>módulo de Drupal</strong> para insertar os artigos.
           </p>
 
-          <p>En el directorio <code>scrapy</code> ejecutar <code>launch.sh</code> o:</p>
+          <p>No directorio <code>scrapy</code> executar <code>launch.sh</code> ou:</p>
           <pre><code class="hljs bash" data-trim contenteditable>
 scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
             </code></pre>
 
-          <p>Copiar el fichero <code>drupal.json</code> y el directorio <code>assets</code> a la raiz de una instalación drupal y ejecutar::</p>
+          <p>Copiar o ficheiro <code>drupal.json</code> e o directorio <code>assets</code> á raíz dunha instalación drupal e executar::</p>
           <pre><code class="hljs bash" data-trim contenteditable>
-drush ddi drupal.json --assets=./assets
+drush gdgourense-import drupal.json --assets=./assets
             </code></pre>
         </section>
 

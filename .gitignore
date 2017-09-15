@@ -4,3 +4,4 @@
 *.iml
 *.py[cod]
 *.log
+node_modules

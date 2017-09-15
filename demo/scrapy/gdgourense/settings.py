@@ -2,7 +2,7 @@
 
 import os
 
-# Scrapy settings for drupalday project
+# Scrapy settings for gdgourense project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -11,14 +11,14 @@ import os
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'drupalday'
+BOT_NAME = 'gdgourense'
 
-SPIDER_MODULES = ['drupalday.spiders']
-NEWSPIDER_MODULE = 'drupalday.spiders'
+SPIDER_MODULES = ['gdgourense.spiders']
+NEWSPIDER_MODULE = 'gdgourense.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'drupalday (+http://www.yourdomain.com)'
+#USER_AGENT = 'gdgourense (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -50,13 +50,13 @@ DOWNLOAD_DELAY = 2
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'drupalday.middlewares.MyCustomSpiderMiddleware': 543,
+#    'gdgourense.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'drupalday.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'gdgourense.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -68,7 +68,7 @@ DOWNLOAD_DELAY = 2
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'drupalday.pipelines.SomePipeline': 300,
+#    'gdgourense.pipelines.SomePipeline': 300,
 #}
 
 ITEM_PIPELINES = {

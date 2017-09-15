@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-from drupalday.items import DrupaldayItem
+from gdgourense.items import GdgourenseItem
 
 class SitepointSpider(scrapy.Spider):
     name = "sitepoint"
@@ -24,7 +24,7 @@ class SitepointSpider(scrapy.Spider):
             yield scrapy.Request(url, callback=self.parse)
 
     def parse_detalle(self, response):
-        item = DrupaldayItem()
+        item = GdgourenseItem()
 
         item['url'] = response.url
         item['title'] = response.css('h1.f-lh-title span').xpath('text()').extract_first()

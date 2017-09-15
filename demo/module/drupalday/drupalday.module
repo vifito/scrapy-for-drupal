@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains drupalday.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function drupalday_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the drupalday module.
+    case 'help.page.drupalday':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Módulo para el DrupalDay') . '</p>';
+      return $output;
+
+    default:
+  }
+}

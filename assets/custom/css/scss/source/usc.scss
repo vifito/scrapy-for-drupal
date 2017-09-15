@@ -1,0 +1,62 @@
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is darkblue.
+ *
+ * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', sans-serif;
+$mainColor: #333;
+$headingFont: 'Ubuntu', Impact, sans-serif;
+$headingColor: #000;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #eee;
+$linkColor: #036;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+$heading1Size: 2.5em;
+$heading2Size: 2.0em;
+$heading3Size: 1.60em;
+$heading4Size: 1.00em;
+
+$selectionBackgroundColor: #666;
+$selectionColor: #fff;
+$blockMargin: 10px;
+
+@mixin bodyBackground() {
+	background: $backgroundColor;
+  background-image: url(../images/usc-bg.png);
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.heading-inverse {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff !important;
+  padding: 0.2em;
+}
+
+.reveal pre {
+	width: 95%;
+}

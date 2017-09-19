@@ -7,6 +7,7 @@
  */
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Frijole);
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -298,12 +299,24 @@ body {
 .reveal pre {
   width: 95%; }
 
+.reveal .video {
+  width: 95%; }
+
 .reveal section img[data-unbordered] {
   border-width: 0px;
-  box-shadow: none;
-}
+  box-shadow: none; }
 
 .reveal .text-center {
   margin: 0 auto;
-  text-align: center;
-}
+  text-align: center; }
+
+.reveal .left {
+  text-align: left; }
+
+.reveal .vermello {
+  color: #f00; }
+  .reveal .vermello.banned {
+    font-family: Frijole, serif;
+    font-weight: bold; }
+
+/*# sourceMappingURL=usc.css.map */

@@ -104,11 +104,11 @@
 
         <section>
           <h2>Sobre esta charla</h2>
-          <p><img src="assets/custom/images/drupalday2016.png" alt="" /></p>
+          <p><img src="assets/custom/images/drupalday2016.png" alt="" data-unbordered="true" /></p>
         </section>
 
         <section>
-          <h2>Situación actual</h2>
+          <h2>Que imos ver?</h2>
           <p class="fragment grow">Migración web USC.es</p>
           <p class="fragment grow">Sitio con miles de páxinas</p>
           <p class="fragment grow">Exportar páxinas "estáticas"</p>
@@ -151,17 +151,17 @@
         <section>
           <h2>Proba de concepto I (inconvintes)</h2>
           <p class="fragment fade-in">
-            A idea funciona para unha páxina pero presenta inconvientes para rastrexar todo un sitio.
+            A idea funciona para unha páxina pero presenta inconvintes para rastrexar todo un sitio.
           </p>
           <p>
-            <strong class="fragment fade-in">Faise necesario implementar:</strong>
+            <strong class="fragment fade-in">Faise necesario implementar a maiores:</strong>
 
             <ul>
-              <li class="fragment fade-in">Xestión da cola de peticións pendentes</li>
               <li class="fragment fade-in">Rastrexo de ligazóns e xestión de duplicados</li>
+              <li class="fragment fade-in">Xestión da cola de peticións pendentes</li>
               <li class="fragment fade-in">Almacenamento dos contidos extraídos</li>
               <li class="fragment fade-in">Procesamento multifío</li>
-              <li class="fragment fade-in">Xestión jobs: pausing and resuming crawls</li>
+              <li class="fragment fade-in">Xestión jobs: poder parar e reanudar o traballo</li>
               <li class="fragment fade-in">Estatísticas, tratamento imaxes, ficheiros, xestión de redireccións, erros 500...</li>
             </ul>
           </p>
@@ -193,7 +193,7 @@
             <img src="assets/custom/images/scrapy-big-logo.png" data-unbordered="true" alt="" align="right" />
             Atopamos un framework máis completo centrado na programación de arañas.
             <br/>
-            Empregamos o framework Scrapy e obtenemos contidos en formato JSON. Posteriormente con Drush os integrámolos en Drupal.
+            Empregamos o framework Scrapy e obtenemos contidos en formato JSON. Posteriormente con Drush integrámolos en Drupal.
           </p>
           <p>
             <img src="assets/custom/images/solucionII.png" data-unbordered="true" alt="" border="0" />
@@ -218,12 +218,15 @@
             <p>
               Instalación de scrapy empregando <code>pip</code>
             </p>
-            <pre><code class="hljs bash" data-trim contenteditable>
+            <pre><code class="hljs bash" data-trim>
 sudo pip install scrapy
             </code></pre>
 
             <p class="fragment fade-in">
-              Empregamos o xestor de paquetes de Python <a href="https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)">pip</a>
+              Empregamos o xestor de paquetes de Python
+              <a href="https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)">
+                 pip <i class="fa fa-external-link"></i>
+              </a>
               <br/>
               <img src="assets/custom/images/pip.png" data-unbordered="true" alt="" border="0" />
             </p>
@@ -256,7 +259,7 @@ sudo apt-get install python-dev python-pip libxml2-dev \
           </p>
 
           <pre><code class="hljs bash">
-$ scrapy startproject usc
+$ scrapy startproject gdgourense
   </code></pre>
         </section>
 
@@ -351,7 +354,7 @@ class PaxinasSpider(CrawlSpider):
 rules = (
   Rule(
     LinkExtractor(
-        # xpathBasePath es una expresión regular por línea de comandos
+        # xpathBasePath é unha expresión regular por liña de comandos
         restrict_xpaths=xpathBasePath,
         deny=[r'/(en|es)/', r'(calMonth=|calYear=)']
       ),
@@ -366,7 +369,7 @@ rules = (
         <section>
           <h2>Ítems a extraer (items.py)</h2>
 
-          <p>Definimos clase <code>PaxinasItem</code> cos campos que imos a recuperar.</p>
+          <p>Definimos a clase <code>PaxinasItem</code> cos campos que imos a recuperar.</p>
 
           <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
         </section>
@@ -408,7 +411,7 @@ rules = (
           <h2>Implementamos parse_item</h2>
           <p>Empregamos <code>scrapy shell</code> para facer probas dos selectores</p>
 
-          <pre><code class="hljs python" data-trim contenteditable>
+          <pre><code class="hljs python" data-trim>
 class PaxinasSpider(CrawlSpider):
   # ....
   def parse_item(self, response):
@@ -433,7 +436,7 @@ class PaxinasSpider(CrawlSpider):
 
           <p>Precisamos configurar <code>ITEM_PIPELINES</code> para dispoñer do comportamento automático dos campos <code>image_urls</code> e <code>file_urls</code>.</p>
 
-          <pre><code class="hljs python" data-trim contenteditable>
+          <pre><code class="hljs python" data-trim>
 ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 1,
     'scrapy.pipelines.files.FilesPipeline': 1,
@@ -448,7 +451,7 @@ FILES_STORE  = dir + '/../assets/files'
         <section>
           <h2>Executamos crawler</h2>
           <p>Lanzamos para que garde en formato json (-o xerencia.json), con parámetros adicionais (-a), incluímos a opción de parar e reanudar o crawler (-s JOBDIR) e gardamos un log.</p>
-          <pre><code class="hljs python" data-trim contenteditable>
+          <pre><code class="hljs python" data-trim>
 scrapy crawl paxinas -o xerencia.json \
     -a start_url='http://www.usc.es/gl/goberno/xerencia/' \
     -a base_path='/goberno/xerencia/' \
@@ -485,15 +488,15 @@ scrapy crawl paxinas -o xerencia.json \
         <section>
           <h2>Integrar en Drupal I</h2>
           <p>Creamos un módulo cun ficheiro <code>module_name.drush.inc</code></p>
-          <pre><code class="hljs php" data-trim contenteditable>
+          <pre><code class="hljs php" data-trim>
 /**
  * Implements hook_drush_command().
  */
-function usc_front_drush_command() {
-  $items['fe-import-pages'] = [
-    'callback' => 'usc_front_import_pages',
-    'description' => 'Importar páxinas do sitio USC.es (formato JSON).',
-    'aliases' => array('feip'),
+function gdgourense_drush_command() {
+  $items['import-pages'] = [
+    'callback' => 'import_pages',
+    'description' => 'Importar páxinas dun sitio (formato JSON).',
+    'aliases' => array('ipag'),
     'arguments' => [
       'input' => 'Ficheiro JSON co contido das páxinas a cargar.',],
     'options' => [
@@ -510,7 +513,7 @@ function usc_front_drush_command() {
         <section>
           <h2>Integrar en Drupal II</h2>
           <p>Recorrer os ítems do array json e ir inserindo o contido</p>
-          <pre><code class="hljs php" data-trim contenteditable>
+          <pre><code class="hljs php" data-trim>
 $data = json_decode(file_get_contents($input), TRUE);
 /** @var \Drupal\Core\Path\AliasStorage $aliasStorage */
 $aliasStorage = \Drupal::service('path.alias_storage');
@@ -518,11 +521,11 @@ $aliasStorage = \Drupal::service('path.alias_storage');
 foreach($data as $item) {
   if (!$aliasStorage->aliasExists($link, $langcode)) {
     $values = [
-      'type' => 'usc_front_page_general',
+      'type' => 'page_general',
       'title' => $item['titulo'],
       // ...
       'body' => ['value' => $item['contidos'],],
-      'field_fe_description' => $item['description'],
+      'field_description' => $item['description'],
     ];
   }
   // ... tratar imágenes y ficheros
@@ -532,15 +535,16 @@ foreach($data as $item) {
         <section>
           <h2>Ficheiros xestionados</h2>
           <p>Recorrer arrays de <code>images</code> e <code>files</code>, e damos de alta en Drupal (táboa: file_managed)</p>
-          <pre><code class="hljs php" data-trim contenteditable>
+          <pre><code class="hljs php" data-trim>
 foreach($item['images'] as $img) {
   $path = 'public://' . $img['url'];
   $imagename = realpath($assets . '/images/' . $img['path']);
   // validacións omitidas, file_exists, ...
-  $image_stream = file_get_contents($imagename);
-  if(!file_prepare_directory(dirname($path))) {
+  $dir = dirname($path);
+  if(!file_prepare_directory($dir)) {
     drupal_mkdir($dir, NULL, True);
   }
+  $image_stream = file_get_contents($imagename);
   $file = file_save_data($image_stream, $path, FILE_EXISTS_REPLACE);
   // $alternativeText = $alt !== null? $alt: t('Imaxe');
   $image_id[] = [
@@ -549,7 +553,7 @@ foreach($item['images'] as $img) {
   ];
   // Remprazar os href no contido ($values['body'])
 }
-$values['field_fe_image'] = $image_id; // array cos IDs das imáxes
+$values['field_image'] = $image_id; // array cos IDs das imáxes
           </code></pre>
         </section>
 
@@ -558,7 +562,7 @@ $values['field_fe_image'] = $image_id; // array cos IDs das imáxes
 
           <p>Crear taxonomías para o campo <code>keywords</code></p>
 
-          <pre><code class="hljs php" data-trim contenteditable>
+          <pre><code class="hljs php" data-trim>
 $terms = explode(',', $item['keywords']);
 foreach($terms as $term) {
   $termId = $storage->getQuery()
@@ -575,7 +579,7 @@ foreach($terms as $term) {
   }
   $tids[] = ['target_id' => current($termId),];
 }
-$values['field_fe_keywords'] = $tids;</code></pre>
+$values['field_keywords'] = $tids;</code></pre>
         </section>
 
         <section>
@@ -583,13 +587,14 @@ $values['field_fe_keywords'] = $tids;</code></pre>
 
           <p>Comprobar que existe un menú, senón crealo</p>
 
-          <pre><code class="hljs php" data-trim contenteditable>
-// $menu_name → nome do menú
+          <pre><code class="hljs php" data-trim>
+// $menu_name => nome do menú
 $nids = \Drupal::entityQuery('menu')
   ->condition('id', $menu_name)->execute();
 
 if (empty($nids)) { // Crear menú si no existe
-  $menu_desc = t('Menú') . ' ' . ucwords(str_replace('menu-', '', $menu_name));
+  $menu_desc = t('Menú') . ' ' .
+    ucwords(str_replace('menu-', '', $menu_name));
   /** @var \Drupal\system\Entity\Menu $menu */
   $menu = entity_create('menu', array(
     'id'          => $menu_name,
@@ -607,7 +612,7 @@ if (empty($nids)) { // Crear menú si no existe
 
           <p>Crear ítems do menú</p>
 
-          <pre><code class="hljs php" data-trim contenteditable>
+          <pre><code class="hljs php" data-trim>
 // Comprobar se xa existe
 $nids = \Drupal::entityQuery('menu_link_content')
   ->condition('default_langcode', 1)->condition('title', $item['titulo'])
@@ -619,7 +624,8 @@ if (count($nids) === 0) {
     'title' => $item['titulo'],
     'menu_name' => $menu_name,
     // ...
-    'link' => ['uri' => 'internal:' . $link], ];
+    'link' => ['uri' => 'internal:' . $link],
+  ];
 
   $menu_link_content = MenuLinkContent::create($menuData);
   $menu_link_content->save();
@@ -631,16 +637,84 @@ if (count($nids) === 0) {
           <h2>Outras alternativas</h2>
           <p>
             <ul>
-              <li class="fragment fade-in">Empregar o módulo migrate para cargar os contidos.</li>
-              <li class="fragment fade-in">Insertar dende código Python os contidos directamente na base de datos.</li>
-              <li class="fragment fade-in">Publicar os servizos REST de Drupal e dende código Python insertar vía REST.</li>
+              <li class="fragment fade-in">Empregar o módulo <strong>migrate</strong> para cargar os contidos.</li>
+              <li class="fragment fade-in">Insertar dende código Python os contidos directamente na <strong>base de datos</strong>.</li>
+              <li class="fragment fade-in">Publicar os <strong>servizos REST</strong> de Drupal e dende código Python insertar os contidos empregando o API.</li>
             </ul>
           </p>
         </section>
 
         <section>
-          <h2>BONUS: Implementar pipeline propio</h2>
-          <pre><code class="hljs python" data-trim contenteditable>
+          <section data-background="#000000">
+            <h2 class="vermello banned">BANNED</h2>
+            <img src="assets/custom/images/terminatorsad.jpg" alt="" data-unbordered="true" />
+          </section>
+
+          <section>
+            <h2>User-Agent aleatorio</h2>
+            <p>Creamos un middleware que escollerá aleatoriamente dunha lista un user-agent distinto en cada petición.</p>
+            <pre><code class="hljs python" data-trim>
+# ./scrapy/gdgourense/settings.py
+USER_AGENT_LIST = [
+   'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, ...',
+   'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0) Gecko/16.0 ...',
+   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534...'
+]
+
+# ./scrapy/gdgourense/middlewares.py
+#...
+class RandomUserAgentMiddleware(object):
+    def process_request(self, request, spider):
+        ua  = random.choice(settings.get('USER_AGENT_LIST'))
+        if ua:
+            request.headers.setdefault('User-Agent', ua)
+</code></pre>
+          </section>
+
+          <section>
+            <h2>Empregar Proxies</h2>
+            <p>No caso que nos bloqueen por IP a nosa máquina podemos botar man dos proxies.</p>
+            <pre><code class="hljs python" data-trim>
+# ./scrapy/gdgourense/settings.py
+#HTTP_PROXY = 'http://127.0.0.1:8123' # Polipo proxy service
+HTTP_PROXY = 'http://127.0.0.1:8118' # Privoxy
+
+# ./scrapy/gdgourense/middlewares.py
+#...
+class ProxyMiddleware(object):
+    def process_request(self, request, spider):
+        request.meta['proxy'] = settings.get('HTTP_PROXY')
+</code></pre>
+          </section>
+
+          <section>
+            <h2>Privoxy e Tor</h2>
+            <p class="left">Podemos configurar Scrapy para realice peticións a través de Tor e Privoxy.</p>
+            <pre><code class="hljs python" data-trim>
+sudo apt-get install tor privoxy
+# sudo apt-get install polipo
+</code></pre>
+            <p class="left">
+              <a href="http://www.alcancelibre.org/staticpages/index.php/como-privoxy-tor">
+                Configurar Tor e Privoxy
+                <i class="fa fa-external-link"></i>
+              </a>
+            </p>
+          </section>
+
+          <section>
+            <h2>Solución en scrapinghub</h2>
+            <div class="video">
+              <iframe src="https://player.vimeo.com/video/135827204?autoplay=0&amp;title=0&amp;byline=0&amp;portrait=0" title="Crawlera" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-ready="true" tabindex="-1" width="640" height="360" frameborder="0"></iframe>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Almacenamento alternativo</h2>
+            <p>Gardar os contidos en MongoDB para realizar consultas e xerar un JSON máis personalizado.</p>
+            <pre><code class="hljs python" data-trim>
 import pymongo
 # import ...
 class PaxinasPipeline(object):
@@ -659,89 +733,212 @@ class PaxinasPipeline(object):
     self.collection.update({'url': item['url']}, dict(item), upsert=True)
     return item
 </code></pre>
-          <p></p>
-        </section>
+            <p></p>
+          </section>
 
-        <section>
-          <h2>BONUS: Configuramos pipeline MongoDB</h2>
+          <section>
+            <h2>Configuramos pipeline MongoDB</h2>
 
-          <pre><code class="hljs python" data-trim contenteditable>
+            <pre><code class="hljs python" data-trim>
 ITEM_PIPELINES = {
-  'scrapy.pipelines.images.ImagesPipeline': 1,
-  'scrapy.pipelines.files.FilesPipeline': 1,
   'paxinas.pipelines.PaxinasPipeline': 1,
+  # ... imaxes, ficheiros, ...
 }
-
-dir = os.path.dirname(os.path.abspath(__file__))
-IMAGES_STORE = dir + '/../assets/images'
-FILES_STORE  = dir + '/../assets/files'
 
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
-MONGODB_DB = "usc"
+MONGODB_DB = "gdgourense"
 MONGODB_COLLECTION = "paxinas"
 </code></pre>
+          </section>
+
+          <section>
+            <h2>Funcionamento dun pipeline</h2>
+            <img src="assets/custom/images/scrapy_pipeline.png" alt="" data-unbordered="true" />
+          </section>
         </section>
 
         <section>
-          <h2>Portia</h2>
-          <p>Portia, proxecto que permite extraer de forma visual.</p>
+          <section>
+            <h2 class="left">Que pasa coas SPA?</h2>
+            <img src="assets/custom/images/fry.jpg" alt="" data-unbordered="true" />
+          </section>
+
+          <section>
+            <h2>Splash</h2>
+            <p class="left">
+              Splash é un <strong>servizo de renderizado javascript</strong>. Algunhas das súas características:
+            </p>
+            <ul>
+              <li>Recuperar o resultado en HTML, ou pantallazo</li>
+              <li>Non cargar imaxes ou empregar regras de Adblock Plus para renderizar máis rápido</li>
+              <li>Executar Javascript no contexto da páxina</li>
+              <li>Scripting en Lua</li>
+              <li>Obter captura HAR (HTTP Archive)</li>
+            </ul>
+            <p class="left">Tamén se pode combinar Scrapy con PhamtonJS ou Selenium.</p>
+          </section>
+
+          <section>
+            <h2>Splash e Scrapy</h2>
+            <p class="left">
+              Empregamos o servicio de Splash a través dun
+              <a href="https://github.com/scrapy-plugins/scrapy-splash">
+                middleware
+                <i class="fa fa-external-link"></i>
+              </a>.
+              As páxinas <em>descárganse e interprétanse</em> con Splash e pásanse a Scrapy.
+            </p>
+            <pre><code class="hljs python" data-trim>
+# ./scrapy/gdgourense/settings.py
+SPLASH_URL = 'http://192.168.59.103:8050'
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
+</code></pre>
+          </section>
         </section>
 
         <section>
-          <h2>Faino ti mesmo</h2>
+          <section data-background="assets/custom/images/portia.png" data-background-color="#FFFFFF" data-background-size="contain">
+            <h2>Portia</h2>
+            <p>Portia, proxecto que permite extraer de forma visual.</p>
+            <div class="video">
+              <iframe src="https://player.vimeo.com/video/129010091?autoplay=0&amp;autopause=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Portia Promotional Video" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" data-ready="true" tabindex="-1" width="640" height="360" frameborder="0"></iframe>
+            </div>
+          </section>
 
+          <section data-background-color="#FFFFFF" data-background-video="assets/custom/portia.webm">
+            <!-- Demo de portia en vídeo -->
+          </section>
+
+          <section>
+            <h2>Proba portia con docker</h2>
+            <pre><code class="hljs bash" data-trim>
+docker pull scrapinghub/portia
+docker run -i -t --rm -p 9001:9001 --name portia portia
+
+# Abrir no navegador http://127.0.0.1:9001/static/index.html
+</code></pre>
+          </section>
+
+          <section>
+            <h2>Potia2code</h2>
+            <p class="left">Converter o proxecto de Portia dentro de arañas Scrapy. Só proxectos con Portia 2 soportados.</p>
+            <p class="left">
+              <a href="https://blog.scrapinghub.com/2016/06/29/introducing-portia2code-portia-projects-into-scrapy-spiders/">
+                Introducing Portia2Code (Blogue Scrapinghub)
+                <i class="fa fa-external-link"></i>
+              </a>
+            </p>
+          </section>
+        </section>
+
+        <section data-background="#FFFFFF">
+          <h2>Indexar contidos</h2>
           <p>
-            <img src="assets/custom/images/Octocat.jpg" data-unbordered="true" alt="" width="100" />
+            <img src="assets/custom/images/scrapy-e-solr.png" alt="" data-unbordered="true" />
+            <br/>
+            <a href="https://github.com/scalingexcellence/scrapy-solr">
+              Pipeline de Scrapy para Solr
+              <i class="fa fa-external-link"></i>
+            </a>
           </p>
+        </section>
 
-          <p class="fragment fade-in">
-            Esta presentación está dispoñible en: <a href="https://vifito.github.io/scrapy-for-drupal/">vifito.github.io/scrapy-for-drupal/</a>
-          </p>
+        <!-- FAINO TI MESMO -->
+        <section>
+          <section data-background="#FFFFFF">
+            <h2>Faino ti mesmo</h2>
 
-          <p class="fragment fade-in">
-            E no repositorio: <a href="https://github.com/vifito/scrapy-for-drupal">github.com/vifito/scrapy-for-drupal</a>
-          </p>
+            <img src="assets/custom/images/Octocat.jpg" data-unbordered="true" alt="" width="20%" />
 
-          <pre class="fragment fade-in"><code data-trim contenteditable>
+            <p class="left fragment fade-in">
+              Esta presentación está dispoñible en:
+              <a href="https://vifito.github.io/scrapy-for-drupal/">
+                vifito.github.io/scrapy-for-drupal/
+                <i class="fa fa-external-link"></i>
+              </a>
+            </p>
+
+            <p class="left fragment fade-in">
+              E no repositorio:
+              <a href="https://github.com/vifito/scrapy-for-drupal">
+                github.com/vifito/scrapy-for-drupal
+                <i class="fa fa-external-link"></i>
+              </a>
+            </p>
+
+            <pre class="fragment fade-in"><code data-trim>
 github.com/vifito/scrapy-for-drupal
 └── demo
     ├── module
     │   └── scrapy
     └── scrapy
         └── scrapy
+              </code></pre>
+          </section>
 
-            </code></pre>
+          <section>
+            <h2>Faino ti mesmo</h2>
+
+            <p class="left">
+              A demo inclúe <strong>unha araña con Scrapy</strong> que recupera os artigos de
+              <a href="https://www.sitepoint.com/tag/drupal-8/">Drupal 8 de Sitepoint <i class="fa fa-external-link"></i></a>.
+              E un <strong>módulo de Drupal</strong> para insertar os artigos.
+            </p>
+
+            <p class="left fragment fade-in">No directorio <code>scrapy</code> executar <code>launch.sh</code> ou:</p>
+            <pre class="fragment fade-in"><code class="hljs bash" data-trim>
+scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
+              </code></pre>
+
+            <p class="left fragment fade-in">Copiar o ficheiro <code>drupal.json</code> e o directorio <code>assets</code> á raíz dunha instalación drupal e executar:</p>
+            <pre class="fragment fade-in"><code class="hljs bash" data-trim>
+drush gdgourense-import drupal.json --assets=./assets
+              </code></pre>
+          </section>
+
+          <section>
+            <p>
+cd scrapy-for-drupal/demo
+docker run --name gdgourense -d \
+    -v `pwd`/module:/var/www/html/modules \
+    -v `pwd`/scrapy:/var/www/html \
+    -p 8022:22 -p 8080:80 wadmiraal/drupal
+            </p>
+          </section>
+      </section>
+      <!-- /FAINO TI MESMO -->
+
+        <section>
+          <h1>Referencias Scrapy</h1>
+          <ul class="left">
+            <li><a href="https://scrapy.org/">Páxina de Scrapy</a></li>
+            <li><a href="https://github.com/scrapinghub/">Proxectos de Scrapinghub en Github (scrapy, portia, portia2code, splash, ...)</a></li>
+            <li><a href="http://splash.readthedocs.io/en/stable/">Documentación de Splash</a></li>
+            <li><a href="http://pkmishra.github.io/blog/2013/03/18/how-to-run-scrapy-with-TOR-and-multiple-browser-agents-part-1-mac/">Scrapy empregando TOR e alternando User-agent</a></li>
+            <li><a href="https://lucidworks.com/2013/06/13/indexing-web-sites-in-solr-with-python/">Indexando sitios con Scrapy e Solr</a></li>
+            <li><a href="https://blog.scrapinghub.com/2016/06/29/introducing-portia2code-portia-projects-into-scrapy-spiders/">Proxectos de Portia2code dentro de scrapy</a></li>
+            <li><a href="https://github.com/scrapinghub/scrapy-training/blob/master/unit5/README.md">Unit 5: Scraping JavaScript based pages</a></li>
+            <li><a href="https://potentpages.com/web-crawler-development/tutorials/scrapy">Titoriais de Scrapy</a></li>
+          </ul>
         </section>
 
         <section>
-          <h2>Faino ti mesmo</h2>
-
-          <p>
-            A demo inclúe <strong>unha araña con Scrapy</strong> que recupera os artigos de Drupal 8 de Sitepoint (https://www.sitepoint.com/tag/drupal-8/). E un <strong>módulo de Drupal</strong> para insertar os artigos.
-          </p>
-
-          <p>No directorio <code>scrapy</code> executar <code>launch.sh</code> ou:</p>
-          <pre><code class="hljs bash" data-trim contenteditable>
-scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
-            </code></pre>
-
-          <p>Copiar o ficheiro <code>drupal.json</code> e o directorio <code>assets</code> á raíz dunha instalación drupal e executar::</p>
-          <pre><code class="hljs bash" data-trim contenteditable>
-drush gdgourense-import drupal.json --assets=./assets
-            </code></pre>
+          <h1>Referencias Drupal 8</h1>
+          <ul class="left">
+            <li><a href="https://www.drupal.org/">Páxina oficial de Drupal</a></li>
+            <li><a href="http://www.drush.org/en/master/">Drush</a></li>
+            <li><a href="http://drupalconsole.com">Drupal Console</a></li>
+            <li><a href="https://www.drupal.org/docs/8/core/modules/rest">Expoñer entidades como API REST</a></li>
+          </ul>
         </section>
 
-
-        <section style="text-align: left;">
-          <h1>FIN</h1>
-          <p>
-            Visítanos en breve
-            <a href="http://www.usc.es">http://www.usc.gal</a>
-          </p>
-          <p class="text-center">
-            <img src="assets/custom/images/usc-love-drupal.png" align="center" data-unbordered="true" alt="" />
-          </p>
+        <section>
+          <h1>Grazas pola atención</h1>
         </section>
 
       </div>

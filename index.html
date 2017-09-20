@@ -81,26 +81,14 @@
             </p>
           </section>
 
-          <section data-background="assets/custom/images/oficina-web.jpg">
+          <!-- <section data-background="assets/custom/images/oficina-web.jpg">
             <h2>Traballo na</h2>
             <h3><i class="fa fa-home" aria-hidden="true"></i> Oficina Web da <abbr title="Universidade de Santiago de Compostela">USC</abbr></h3>
-            <!-- <p>
+            <p>
               como <br/>Técnico especialista informática <br/> Especialidade desenvolvemento de sistemas
-            </p> -->
-          </section>
+            </p>
+          </section> -->
         </section>
-
-        <!--<section>
-          <h2>Agenda</h2>
-          <ul>
-            <li>Situación actual</li>
-            <li>Instalación de las herramientas necesarias</li>
-            <li>Tipos de crawlers</li>
-            <li>Extracción de contenidos</li>
-            <li>Limpieza de código HTML, tratamiento imágenes y ficheros</li>
-            <li>Integración en Drupal</li>
-          </ul>
-        </section>-->
 
         <section>
           <h2>Sobre esta charla</h2>
@@ -130,76 +118,80 @@
         </section>
 
         <section>
-          <h2>Segunda idea</h2>
-          <p>Acceder directamente a través da web e extraer os contidos (scraping).</p>
-          <p>OLLO! falamos de integración dos contidos "estáticos". O resto de contidos son integrados vía servizos web.</p>
-        </section>
+          <section>
+            <h2>Segunda idea</h2>
+            <p>Acceder directamente a través da web e extraer os contidos (scraping).</p>
+            <blockquote class="left">
+              OLLO! falamos de contidos con pouca frecuencia de actualización (case "estáticos"). O resto de contidos son integrados vía servizos web.
+            </blockquote>
+          </section>
 
-        <section>
-          <h2>Proba de concepto I</h2>
-          <p>
-            Empregar <strong>Goutte</strong> para recuperar e extraer contidos.<br/>Insertar en Drupal a través dun comando <strong>Drush</strong> empregando Entity API.<br/> Todo implementado en <strong>PHP</strong> con componentes alternativos <strong>Guzzle</strong> e <strong>DOMCrawler</strong>.
-          </p>
-          <p>
-            <img src="assets/custom/images/php.png" alt="" border="0" />
-          </p>
+          <section>
+            <h3>Proba de concepto I</h3>
+            <p>
+              Empregar <strong>Goutte</strong> para recuperar e extraer contidos.<br/>Insertar en Drupal a través dun comando <strong>Drush</strong> empregando Entity API.<br/> Todo implementado en <strong>PHP</strong> con componentes alternativos <strong>Guzzle</strong> e <strong>DOMCrawler</strong>.
+            </p>
+            <p>
+              <img src="assets/custom/images/php.png" alt="" border="0" />
+            </p>
 
-          <img class="fragment current-visible" src="assets/custom/images/100x100php.png" alt="" style="border-width:0px;box-shadow:none;position:absolute; left:0px; top:0px;" />
+            <img class="fragment current-visible" src="assets/custom/images/100x100php.png" alt="" style="border-width:0px;box-shadow:none;position:absolute; left:0px; top:0px;" />
 
-        </section>
+          </section>
 
-        <section>
-          <h2>Proba de concepto I (inconvintes)</h2>
-          <p class="fragment fade-in">
-            A idea funciona para unha páxina pero presenta inconvintes para rastrexar todo un sitio.
-          </p>
-          <p>
-            <strong class="fragment fade-in">Faise necesario implementar a maiores:</strong>
+          <section>
+            <h3>Proba de concepto I (inconvintes)</h3>
+            <p class="fragment fade-in">
+              A idea funciona para unha páxina pero presenta inconvintes para rastrexar todo un sitio.
+            </p>
+            <p>
+              <strong class="fragment fade-in">Faise necesario implementar a maiores:</strong>
 
-            <ul>
-              <li class="fragment fade-in">Rastrexo de ligazóns e xestión de duplicados</li>
-              <li class="fragment fade-in">Xestión da cola de peticións pendentes</li>
-              <li class="fragment fade-in">Almacenamento dos contidos extraídos</li>
-              <li class="fragment fade-in">Procesamento multifío</li>
-              <li class="fragment fade-in">Xestión jobs: poder parar e reanudar o traballo</li>
-              <li class="fragment fade-in">Estatísticas, tratamento imaxes, ficheiros, xestión de redireccións, erros 500...</li>
-            </ul>
-          </p>
+              <ul>
+                <li class="fragment fade-in">Rastrexo de ligazóns e xestión de duplicados</li>
+                <li class="fragment fade-in">Xestión da cola de peticións pendentes</li>
+                <li class="fragment fade-in">Almacenamento dos contidos extraídos</li>
+                <li class="fragment fade-in">Procesamento multifío</li>
+                <li class="fragment fade-in">Xestión jobs: poder parar e reanudar o traballo</li>
+                <li class="fragment fade-in">Estatísticas, tratamento imaxes, ficheiros, xestión de redireccións, erros 500...</li>
+              </ul>
+            </p>
 
-          <aside class="notes">
-            - Importante controlar o código de estado e os content-types de retorno
-            - Os ficheiros no OpenCMS están no VFS
-            - A imaxes están en miniatura (queremos os orixinais)
-          </aside>
-        </section>
+            <aside class="notes">
+              - Importante controlar o código de estado e os content-types de retorno
+              - Os ficheiros no OpenCMS están no VFS
+              - A imaxes están en miniatura (queremos os orixinais)
+            </aside>
+          </section>
 
-        <section>
-          <h2>Proba de concepto II</h2>
-          <p>
-            Precisamos algo máis que unha API de scraping de páxinas.
+          <section>
+            <h3>Proba de concepto II</h3>
+            <p>
+              Precisamos algo máis que unha API de scraping de páxinas.
 
-            <ul>
-              <li class="fragment fade-in">Scraping, extracción de contidos</li>
-              <li class="fragment fade-in">Crawling, bot para seguir a navegación</li>
-              <li class="fragment fade-in">Storing, almacenar os contidos</li>
-              <li class="fragment fade-in">Plumbing, outras tarefas de «fontanería»</li>
-            </ul>
-          </p>
-        </section>
+              <ul>
+                <li class="fragment fade-in">Scraping, extracción de contidos</li>
+                <li class="fragment fade-in">Crawling, bot para seguir a navegación</li>
+                <li class="fragment fade-in">Storing, almacenar os contidos</li>
+                <li class="fragment fade-in">Plumbing, outras tarefas de «fontanería»</li>
+              </ul>
+            </p>
+          </section>
 
-        <section>
-          <h2>Proba de concepto II</h2>
-          <p>
-            <img src="assets/custom/images/scrapy-big-logo.png" data-unbordered="true" alt="" align="right" />
-            Atopamos un framework máis completo centrado na programación de arañas.
-            <br/>
-            Empregamos o framework Scrapy e obtenemos contidos en formato JSON. Posteriormente con Drush integrámolos en Drupal.
-          </p>
-          <p>
-            <img src="assets/custom/images/solucionII.png" data-unbordered="true" alt="" border="0" />
-          </p>
+          <section>
+            <h3>Proba de concepto II</h3>
+            <p>
+              <img src="assets/custom/images/scrapy-big-logo.png" data-unbordered="true" alt="" align="right" />
+              Atopamos un framework máis completo centrado na programación de arañas.
+              <br/>
+              Empregamos o framework Scrapy e obtenemos contidos en formato JSON. Posteriormente con Drush integrámolos en Drupal.
+            </p>
+            <p>
+              <img src="assets/custom/images/solucionII.png" data-unbordered="true" alt="" border="0" />
+            </p>
 
-          <img class="fragment current-visible" src="assets/custom/images/50x50.png" alt="" style="border-width:0px;box-shadow:none;position:absolute; left:0px; top:0px;" />
+            <img class="fragment current-visible" src="assets/custom/images/50x50.png" alt="" style="border-width:0px;box-shadow:none;position:absolute; left:0px; top:0px;" />
+          </section>
         </section>
 
         <section>
@@ -219,7 +211,7 @@
               Instalación de scrapy empregando <code>pip</code>
             </p>
             <pre><code class="hljs bash" data-trim>
-sudo pip install scrapy
+$ sudo pip install scrapy
             </code></pre>
 
             <p class="fragment fade-in">
@@ -235,37 +227,35 @@ sudo pip install scrapy
           <section>
             <h2>Requisitos previos (Ubuntu)</h2>
             <pre><code class="hljs sh">
-sudo apt-get install python-dev python-pip libxml2-dev \
+$ sudo apt-get install python-dev python-pip libxml2-dev \
   libxslt1-dev zlib1g-dev libffi-dev libssl-dev
               </code></pre>
           </section>
-
-        </section>
-
-
-
-        <section>
-          <h2>Probamos a instalación de scrapy</h2>
-          <p>
-            <img src="assets/custom/images/scrapy-cmd.png" data-unbordered="true" alt="" />
-          </p>
         </section>
 
         <section>
-          <h2>Iniciamos proxecto de scrapy</h2>
+          <section>
+            <h2>Probamos a instalación de scrapy</h2>
+            <p>
+              <img src="assets/custom/images/scrapy-cmd.png" data-unbordered="true" alt="" />
+            </p>
+          </section>
 
-          <p>
-            Creamos un proxecto de scrapy coa opción <code>startproject</code>
-          </p>
+          <section>
+            <h2>Iniciamos proxecto de scrapy</h2>
 
-          <pre><code class="hljs bash">
+            <p>
+              Creamos un proxecto de scrapy coa opción <code>startproject</code>
+            </p>
+
+            <pre><code class="hljs bash">
 $ scrapy startproject gdgourense
-  </code></pre>
-        </section>
+    </code></pre>
+          </section>
 
-        <section>
-          <h2>Estrutura do proxecto</h2>
-          <pre>
+          <section>
+            <h2>Estrutura do proxecto</h2>
+            <pre>
 .
 ├── scrapy.cfg   → Ficheiro de scrapy (nome do proxecto)
 └── paxinas
@@ -275,31 +265,33 @@ $ scrapy startproject gdgourense
     ├── settings.py   → Configuración de opcións do proxecto
     └── spiders
         └── __init__.py
-          </pre>
+            </pre>
+          </section>
         </section>
 
         <section>
           <section>
-            <h2>Crear unha araña</h2>
+            <h2>Tipos de arañas</h2>
 
             <p>
-              Dende líña de comandos podemos crear o "esquelete" da araña coa opción <code>genspider</code>
+              Dende líña de comandos podemos crear o "esquelete" da araña coa opción <code>genspider</code>.
+              Un proxecto pode conter varias arañas.
             </p>
 
             <p>Scrapy vén con varios modelos para implementar arañas.</p>
 
             <pre><code class="hljs bash">
-  $ scrapy genspider --list
-  Available templates:
-    basic
-    crawl
-    csvfeed
-    xmlfeed
+$ scrapy genspider --list
+Available templates:
+  basic
+  crawl
+  csvfeed
+  xmlfeed
     </code></pre>
           </section>
 
           <section>
-            <h2>Tipos de crawlers</h2>
+            <h2>Clases Python</h2>
 
             <dl>
               <dt>basic</dt>
@@ -315,11 +307,9 @@ $ scrapy startproject gdgourense
               <dd>A clase herda de <code>XMLFeedSpider</code>. Similar a XMLFeedSpider para documentos CSV.</dd>
             </dl>
           </section>
-        </section>
 
-        <section>
           <section>
-            <h2>Crear unha araña II</h2>
+            <h2>Crear unha araña</h2>
 
             <pre><code class="hljs bash">
 $ scrapy genspider -t crawl paxinas
@@ -367,51 +357,52 @@ rules = (
         </section>
 
         <section>
-          <h2>Ítems a extraer (items.py)</h2>
+          <section>
+            <h3>Ítems a extraer (items.py)</h3>
 
-          <p>Definimos a clase <code>PaxinasItem</code> cos campos que imos a recuperar.</p>
+            <p>Definimos a clase <code>PaxinasItem</code> cos campos que imos a recuperar.</p>
 
-          <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
-        </section>
+            <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
+          </section>
 
-        <section>
-          <h2>Selectores</h2>
+          <section>
+            <h3>Selectores</h3>
 
-          <table>
-            <thead>
-            <tr>
-              <th>CSS (response.css)</th>
-              <th>XPath (response.xpath)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>title::text</td>
-              <td>//title/text()</td>
-            </tr>
-            <tr>
-              <td>base::attr(href)</td>
-              <td>//base/@href</td>
-            </tr>
-            <tr>
-              <td>a[href*=image]::attr(href)</td>
-              <td>//a[contains(@href, "image")]/@href</td>
-            </tr>
-            </tbody>
-          </table>
+            <table>
+              <thead>
+              <tr>
+                <th>CSS (response.css)</th>
+                <th>XPath (response.xpath)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>title::text</td>
+                <td>//title/text()</td>
+              </tr>
+              <tr>
+                <td>base::attr(href)</td>
+                <td>//base/@href</td>
+              </tr>
+              <tr>
+                <td>a[href*=image]::attr(href)</td>
+                <td>//a[contains(@href, "image")]/@href</td>
+              </tr>
+              </tbody>
+            </table>
 
-          <p>Tamén con expresións regulares <code>response.re()</code>.</p>
-        </section>
+            <p>Tamén con expresións regulares <code>response.re()</code>.</p>
+          </section>
 
-        <section data-background-video="./assets/custom/scrapy-shell.webm" data-background-color="#FFFFFF">
-          <h2 class="heading-inverse">scrapy shell http://...</h2>
-        </section>
+          <section data-background-video="./assets/custom/scrapy-shell.webm" data-background-color="#FFFFFF">
+            <h2 class="heading-inverse">scrapy shell http://...</h2>
+          </section>
 
-        <section>
-          <h2>Implementamos parse_item</h2>
-          <p>Empregamos <code>scrapy shell</code> para facer probas dos selectores</p>
+          <section>
+            <h2>Implementamos parse_item</h2>
+            <p>Empregamos <code>scrapy shell</code> para facer probas dos selectores</p>
 
-          <pre><code class="hljs python" data-trim>
+            <pre><code class="hljs python" data-trim>
 class PaxinasSpider(CrawlSpider):
   # ....
   def parse_item(self, response):
@@ -428,15 +419,17 @@ class PaxinasSpider(CrawlSpider):
     item['image_urls'] = images
     item['files_urls'] = files
     return item
-          </code></pre>
+            </code></pre>
+          </section>
         </section>
 
         <section>
-          <h2>Configurar pipelines ficheiros e imaxes</h2>
+          <section>
+            <h3>Configurar pipelines</h3>
 
-          <p>Precisamos configurar <code>ITEM_PIPELINES</code> para dispoñer do comportamento automático dos campos <code>image_urls</code> e <code>file_urls</code>.</p>
+            <p>Precisamos configurar <code>ITEM_PIPELINES</code> para dispoñer do comportamento automático dos campos <code>image_urls</code> e <code>file_urls</code>.</p>
 
-          <pre><code class="hljs python" data-trim>
+            <pre><code class="hljs python" data-trim>
 ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 1,
     'scrapy.pipelines.files.FilesPipeline': 1,
@@ -445,11 +438,17 @@ ITEM_PIPELINES = {
 dir = os.path.dirname(os.path.abspath(__file__))
 IMAGES_STORE = dir + '/../assets/images'
 FILES_STORE  = dir + '/../assets/files'
-          </code></pre>
+            </code></pre>
+          </section>
+
+          <section>
+            <h4>Funcionamento dun pipeline</h4>
+            <img src="assets/custom/images/scrapy_pipeline.png" alt="" data-unbordered="true" />
+          </section>
         </section>
 
         <section>
-          <h2>Executamos crawler</h2>
+          <h3>Executamos crawler</h3>
           <p>Lanzamos para que garde en formato json (-o xerencia.json), con parámetros adicionais (-a), incluímos a opción de parar e reanudar o crawler (-s JOBDIR) e gardamos un log.</p>
           <pre><code class="hljs python" data-trim>
 scrapy crawl paxinas -o xerencia.json \
@@ -461,15 +460,16 @@ scrapy crawl paxinas -o xerencia.json \
         </section>
 
         <section>
-          <h2>Mapeo de campos</h2>
-          <p>Temos que mapear os campos do documento JSON aos campos do tipo de contido.</p>
-          <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
-        </section>
+          <section>
+            <h3>Mapeo de campos</h3>
+            <p>Temos que mapear os campos do documento JSON aos campos do tipo de contido.</p>
+            <img src="assets/custom/images/map.png" data-unbordered="true" alt="" />
+          </section>
 
-        <section>
-          <h2>Estrutura JSON</h2>
-          <p>(versión reducida)</p>
-          <pre><code class="hljs json">[{
+          <section>
+            <h2>Estrutura JSON</h2>
+            <p>(versión reducida)</p>
+            <pre><code class="hljs json">[{
   "title": "Servizo de Xestión Académica - USC",
   "url": "http://www.usc.es/gl/servizos/sxa",
   "keywords": "usc, universidade, santiago , compostela, ...",
@@ -483,70 +483,72 @@ scrapy crawl paxinas -o xerencia.json \
       "url": "http://www.usc.es/gl/servizos/sxa//4_Vacantes_Master.pdf",
       "path": "full/67063aa5e3f072742ce4d2c066b973d1ceca64c8.pdf"}]
 }, {...}]</code></pre>
+          </section>
         </section>
 
         <section>
-          <h2>Integrar en Drupal I</h2>
-          <p>Creamos un módulo cun ficheiro <code>module_name.drush.inc</code></p>
-          <pre><code class="hljs php" data-trim>
-/**
- * Implements hook_drush_command().
- */
-function gdgourense_drush_command() {
-  $items['import-pages'] = [
-    'callback' => 'import_pages',
-    'description' => 'Importar páxinas dun sitio (formato JSON).',
-    'aliases' => array('ipag'),
-    'arguments' => [
-      'input' => 'Ficheiro JSON co contido das páxinas a cargar.',],
-    'options' => [
-      'assets' => 'Ruta ao directorio de assets (files e images)',
-      'menu_name' => 'Nome do menú a xerar',
-    ],
-  ];
-}</code></pre>
-          <aside class="notes">
-            - Executar Drush co alias do sitio (@local). Necesario para construír ben as ligazóns.
-          </aside>
-        </section>
+          <section>
+            <h1>Integración en Drupal</h1>
+          </section>
 
-        <section>
-          <h2>Integrar en Drupal II</h2>
-          <p>Recorrer os ítems do array json e ir inserindo o contido</p>
-          <pre><code class="hljs php" data-trim>
-$data = json_decode(file_get_contents($input), TRUE);
-/** @var \Drupal\Core\Path\AliasStorage $aliasStorage */
-$aliasStorage = \Drupal::service('path.alias_storage');
-
-foreach($data as $item) {
-  if (!$aliasStorage->aliasExists($link, $langcode)) {
-    $values = [
-      'type' => 'page_general',
-      'title' => $item['titulo'],
-      // ...
-      'body' => ['value' => $item['contidos'],],
-      'field_description' => $item['description'],
+          <section>
+            <h3>Crear un módulo Drupal</h3>
+            <p>Ficheiro <code>module_name.drush.inc</code>, contén os comandos que poderemos executar con Drush.</p>
+            <pre><code class="hljs php" data-trim>
+  /**
+   * Implements hook_drush_command().
+   */
+  function gdgourense_drush_command() {
+    $items['import-pages'] = [
+      'callback' => 'import_pages',
+      'description' => 'Importar páxinas dun sitio (formato JSON).',
+      'aliases' => array('ipag'),
+      'arguments' => [
+        'input' => 'Ficheiro JSON co contido das páxinas a cargar.',],
+      'options' => [
+        'assets' => 'Ruta ao directorio de assets (files e images)',
+        'menu_name' => 'Nome do menú a xerar',
+      ],
     ];
-  }
-  // ... tratar imágenes y ficheros
-}</code></pre>
-        </section>
+  }</code></pre>
+          </section>
 
-        <section>
-          <h2>Ficheiros xestionados</h2>
-          <p>Recorrer arrays de <code>images</code> e <code>files</code>, e damos de alta en Drupal (táboa: file_managed)</p>
-          <pre><code class="hljs php" data-trim>
+          <section>
+            <h3>Procesamento ficheiro JSON</h3>
+            <p>Recorrer ítems do array json e ir inserindo o contido</p>
+            <pre><code class="hljs php" data-trim>
+  $data = json_decode(file_get_contents($input), TRUE);
+  /** @var \Drupal\Core\Path\AliasStorage $aliasStorage */
+  $aliasStorage = \Drupal::service('path.alias_storage');
+
+  foreach($data as $item) {
+    if (!$aliasStorage->aliasExists($link, $langcode)) {
+      $values = [
+        'type' => 'page_general',
+        'title' => $item['titulo'],
+        // ...
+        'body' => ['value' => $item['contidos'],],
+        'field_description' => $item['description'],
+      ];
+    }
+    // ... tratar imágenes y ficheros
+  }</code></pre>
+          </section>
+
+          <section>
+            <h3>Ficheiros xestionados</h3>
+            <p>Recorrer arrays de <code>images</code> e <code>files</code>, e damos de alta en Drupal (táboa: file_managed)</p>
+            <pre><code class="hljs php" data-trim>
+// Versión reducida: validacións omitidas, file_exists, ...
 foreach($item['images'] as $img) {
   $path = 'public://' . $img['url'];
   $imagename = realpath($assets . '/images/' . $img['path']);
-  // validacións omitidas, file_exists, ...
   $dir = dirname($path);
   if(!file_prepare_directory($dir)) {
     drupal_mkdir($dir, NULL, True);
   }
   $image_stream = file_get_contents($imagename);
   $file = file_save_data($image_stream, $path, FILE_EXISTS_REPLACE);
-  // $alternativeText = $alt !== null? $alt: t('Imaxe');
   $image_id[] = [
     'target_id' => $file->id(),
     'alt' => $alternativeText,
@@ -554,15 +556,15 @@ foreach($item['images'] as $img) {
   // Remprazar os href no contido ($values['body'])
 }
 $values['field_image'] = $image_id; // array cos IDs das imáxes
-          </code></pre>
-        </section>
+  </code></pre>
+          </section>
 
-        <section>
-          <h2>Outros campos (taxonomías)</h2>
+          <section>
+            <h3>Outros campos (taxonomías)</h3>
 
-          <p>Crear taxonomías para o campo <code>keywords</code></p>
+            <p>Crear taxonomías para o campo <code>keywords</code></p>
 
-          <pre><code class="hljs php" data-trim>
+            <pre><code class="hljs php" data-trim>
 $terms = explode(',', $item['keywords']);
 foreach($terms as $term) {
   $termId = $storage->getQuery()
@@ -577,42 +579,43 @@ foreach($terms as $term) {
     $termEntity->save();
     $termId = [$termEntity->id() => $termEntity->id()];
   }
-  $tids[] = ['target_id' => current($termId),];
+  $tids[] = ['target_id' => current($termId)];
 }
-$values['field_keywords'] = $tids;</code></pre>
-        </section>
+$values['field_keywords'] = $tids;
+</code></pre>
+          </section>
 
-        <section>
-          <h2>Integrar con menús I</h2>
+          <section>
+            <h3>Integrar con menús I</h3>
 
-          <p>Comprobar que existe un menú, senón crealo</p>
+            <p>Comprobar que existe un menú, noutro caso crealo</p>
 
-          <pre><code class="hljs php" data-trim>
+            <pre><code class="hljs php" data-trim>
 // $menu_name => nome do menú
 $nids = \Drupal::entityQuery('menu')
   ->condition('id', $menu_name)->execute();
 
 if (empty($nids)) { // Crear menú si no existe
   $menu_desc = t('Menú') . ' ' .
-    ucwords(str_replace('menu-', '', $menu_name));
+      ucwords(str_replace('menu-', '', $menu_name));
   /** @var \Drupal\system\Entity\Menu $menu */
-  $menu = entity_create('menu', array(
+  $menu = entity_create('menu', [
     'id'          => $menu_name,
     'label'       => $menu_desc,
     'description' => $menu_desc,
     'langcode'    => 'gl',
-  ));
+  ]);
   $menu->save();
 }
-</code></pre>
-        </section>
+          </code></pre>
+          </section>
 
-        <section>
-          <h2>Integrar con menús II</h2>
+          <section>
+            <h3>Integrar con menús II</h3>
 
-          <p>Crear ítems do menú</p>
+            <p>Crear ítems do menú</p>
 
-          <pre><code class="hljs php" data-trim>
+            <pre><code class="hljs php" data-trim>
 // Comprobar se xa existe
 $nids = \Drupal::entityQuery('menu_link_content')
   ->condition('default_langcode', 1)->condition('title', $item['titulo'])
@@ -631,13 +634,15 @@ if (count($nids) === 0) {
   $menu_link_content->save();
 }
 </code></pre>
+          </section>
         </section>
 
+
         <section>
-          <h2>Outras alternativas</h2>
+          <h3>Outras alternativas</h3>
           <p>
             <ul>
-              <li class="fragment fade-in">Empregar o módulo <strong>migrate</strong> para cargar os contidos.</li>
+              <li>Empregar o módulo <strong>migrate</strong> para cargar os contidos.</li>
               <li class="fragment fade-in">Insertar dende código Python os contidos directamente na <strong>base de datos</strong>.</li>
               <li class="fragment fade-in">Publicar os <strong>servizos REST</strong> de Drupal e dende código Python insertar os contidos empregando o API.</li>
             </ul>
@@ -737,7 +742,7 @@ class PaxinasPipeline(object):
           </section>
 
           <section>
-            <h2>Configuramos pipeline MongoDB</h2>
+            <h3>Configuramos pipeline MongoDB</h3>
 
             <pre><code class="hljs python" data-trim>
 ITEM_PIPELINES = {
@@ -750,11 +755,6 @@ MONGODB_PORT = 27017
 MONGODB_DB = "gdgourense"
 MONGODB_COLLECTION = "paxinas"
 </code></pre>
-          </section>
-
-          <section>
-            <h2>Funcionamento dun pipeline</h2>
-            <img src="assets/custom/images/scrapy_pipeline.png" alt="" data-unbordered="true" />
           </section>
         </section>
 
@@ -892,12 +892,12 @@ github.com/vifito/scrapy-for-drupal
 
             <p class="left fragment fade-in">No directorio <code>scrapy</code> executar <code>launch.sh</code> ou:</p>
             <pre class="fragment fade-in"><code class="hljs bash" data-trim>
-scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
+$ scrapy crawl sitepoint -o drupal.json --logfile=drupal.log
               </code></pre>
 
             <p class="left fragment fade-in">Copiar o ficheiro <code>drupal.json</code> e o directorio <code>assets</code> á raíz dunha instalación drupal e executar:</p>
             <pre class="fragment fade-in"><code class="hljs bash" data-trim>
-drush gdgourense-import drupal.json --assets=./assets
+$ drush gdgourense-import drupal.json --assets=./assets
               </code></pre>
           </section>
 
@@ -916,27 +916,29 @@ docker run --name gdgourense -d \
       <!-- /FAINO TI MESMO -->
 
         <section>
-          <h1>Referencias Scrapy</h1>
-          <ul class="left">
-            <li><a href="https://scrapy.org/">Páxina de Scrapy</a></li>
-            <li><a href="https://github.com/scrapinghub/">Proxectos de Scrapinghub en Github (scrapy, portia, portia2code, splash, ...)</a></li>
-            <li><a href="http://splash.readthedocs.io/en/stable/">Documentación de Splash</a></li>
-            <li><a href="http://pkmishra.github.io/blog/2013/03/18/how-to-run-scrapy-with-TOR-and-multiple-browser-agents-part-1-mac/">Scrapy empregando TOR e alternando User-agent</a></li>
-            <li><a href="https://lucidworks.com/2013/06/13/indexing-web-sites-in-solr-with-python/">Indexando sitios con Scrapy e Solr</a></li>
-            <li><a href="https://blog.scrapinghub.com/2016/06/29/introducing-portia2code-portia-projects-into-scrapy-spiders/">Proxectos de Portia2code dentro de scrapy</a></li>
-            <li><a href="https://github.com/scrapinghub/scrapy-training/blob/master/unit5/README.md">Unit 5: Scraping JavaScript based pages</a></li>
-            <li><a href="https://potentpages.com/web-crawler-development/tutorials/scrapy">Titoriais de Scrapy</a></li>
-          </ul>
-        </section>
+          <section>
+            <h1>Referencias Scrapy</h1>
+            <ul class="left">
+              <li><a href="https://scrapy.org/">Páxina de Scrapy</a></li>
+              <li><a href="https://github.com/scrapinghub/">Proxectos de Scrapinghub en Github (scrapy, portia, portia2code, splash, ...)</a></li>
+              <li><a href="http://splash.readthedocs.io/en/stable/">Documentación de Splash</a></li>
+              <li><a href="http://pkmishra.github.io/blog/2013/03/18/how-to-run-scrapy-with-TOR-and-multiple-browser-agents-part-1-mac/">Scrapy empregando TOR e alternando User-agent</a></li>
+              <li><a href="https://lucidworks.com/2013/06/13/indexing-web-sites-in-solr-with-python/">Indexando sitios con Scrapy e Solr</a></li>
+              <li><a href="https://blog.scrapinghub.com/2016/06/29/introducing-portia2code-portia-projects-into-scrapy-spiders/">Proxectos de Portia2code dentro de scrapy</a></li>
+              <li><a href="https://github.com/scrapinghub/scrapy-training/blob/master/unit5/README.md">Unit 5: Scraping JavaScript based pages</a></li>
+              <li><a href="https://potentpages.com/web-crawler-development/tutorials/scrapy">Titoriais de Scrapy</a></li>
+            </ul>
+          </section>
 
-        <section>
-          <h1>Referencias Drupal 8</h1>
-          <ul class="left">
-            <li><a href="https://www.drupal.org/">Páxina oficial de Drupal</a></li>
-            <li><a href="http://www.drush.org/en/master/">Drush</a></li>
-            <li><a href="http://drupalconsole.com">Drupal Console</a></li>
-            <li><a href="https://www.drupal.org/docs/8/core/modules/rest">Expoñer entidades como API REST</a></li>
-          </ul>
+          <section>
+            <h1>Referencias Drupal 8</h1>
+            <ul class="left">
+              <li><a href="https://www.drupal.org/">Páxina oficial de Drupal</a></li>
+              <li><a href="http://www.drush.org/en/master/">Drush</a></li>
+              <li><a href="http://drupalconsole.com">Drupal Console</a></li>
+              <li><a href="https://www.drupal.org/docs/8/core/modules/rest">Expoñer entidades como API REST</a></li>
+            </ul>
+          </section>
         </section>
 
         <section>

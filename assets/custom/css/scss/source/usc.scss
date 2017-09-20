@@ -88,3 +88,12 @@ $blockMargin: 10px;
 		font-weight: bold;
 	}
 }
+
+.reveal blockquote {
+	border: 0;
+	box-shadow: none;
+	border-left: 4px solid #ccc;
+	padding-left: 0.5em;
+	text-align: left;
+	font-size: 0.8em;
+}

@@ -258,7 +258,7 @@ $ scrapy startproject gdgourense
             <pre>
 .
 ├── scrapy.cfg   → Ficheiro de scrapy (nome do proxecto)
-└── paxinas
+└── gdgourense
     ├── __init__.py
     ├── items.py   → Clase coa definición dos ítems a extraer
     ├── pipelines.py   → Clase que procesa, valida, almacena, ... ítems
@@ -312,28 +312,31 @@ Available templates:
             <h2>Crear unha araña</h2>
 
             <pre><code class="hljs bash">
-$ scrapy genspider -t crawl paxinas
+$ scrapy genspider -t crawl sitepoint www.sitepoint.com
     </code></pre>
           </section>
 
           <section>
             <h2>Código da clase xerada</h2>
+            <p>
+              OLLO! O código xerado pode variar en función da versión de scrapy instalada.
+            </p>
+            <pre><code class="hljs python"># imports ...
+class SitepointSpider(CrawlSpider):
+  name = 'sitepoint'
+  allowed_domains = ['www.sitepoint.com']
+  start_urls = ['http://www.sitepoint.com/']
 
-            <pre><code class="hljs python">
-import scrapy
-from scrapy.linkextractors import LinkExtractor
-from scrapy.spiders import CrawlSpider, Rule
-
-class PaxinasSpider(CrawlSpider):
-  name = 'paxinas'
-  allowed_domains = ['usc.es']
-  start_urls = ['http://www.usc.es/']
   rules = (
-    Rule(LinkExtractor(allow=r'Items/'),
-          callback='parse_item', follow=True),)
+      Rule(LinkExtractor(allow=r'Items/'), callback='parse_item'),
+  )
 
   def parse_item(self, response):
-    pass
+    i = {}
+    #i['domain'] = response.xpath('//input[@id="sid"]/@value').extract()
+    #i['name'] = response.xpath('//div[@id="name"]').extract()
+    #i['desc'] = response.xpath('//div[@id="description"]').extract()
+    return i
 </code></pre>
           </section>
 

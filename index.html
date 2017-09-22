@@ -904,17 +904,24 @@ $ drush gdgourense-import drupal.json --assets=./assets
               </code></pre>
           </section>
 
-          <!-- <section>
-            <h2></h2>
-            <p></p>
+          <section>
+            <h2>Carga de contidos</h2>
+            <p>A imaxe <code>wadmiraal/drupal</code> contén unha instalación de drupal con drush, drupal console, mailhog, ...</p>
 <pre><code class="hljs bash" data-trim>
 cd scrapy-for-drupal/demo
+
 docker run --name gdgourense -d \
     -v `pwd`/module:/var/www/html/modules \
     -v `pwd`/scrapy:/var/www/html \
     -p 8022:22 -p 8080:80 wadmiraal/drupal
+
+ssh -l root -p 8022 localhost
+
+cd /var/www
+
+drush gdgourense-import drupal.log --assets=./assets
 </code></pre>
-          </section> -->
+          </section>
       </section>
       <!-- /FAINO TI MESMO -->
 

@@ -77,6 +77,8 @@
             <p>
                 <a href="https://www.drupal.org/u/vifito"><i class="fa fa-drupal" aria-hidden="true"></i> vifito</a>
                 &nbsp;&nbsp;
+                <a href="https://github.com/vifito"><i class="fa fa-github" aria-hidden="true"></i> vifito</a>
+                &nbsp;&nbsp;
                 <a href="https://twitter.com/vifito"><i class="fa fa-twitter" aria-hidden="true"></i>@vifito</a>
             </p>
           </section>
@@ -96,7 +98,7 @@
         </section>
 
         <section>
-          <h2>Que imos ver?</h2>
+          <h2>Contexto</h2>
           <p class="fragment grow">Migración web USC.es</p>
           <p class="fragment grow">Sitio con miles de páxinas</p>
           <p class="fragment grow">Exportar páxinas "estáticas"</p>
@@ -763,8 +765,8 @@ MONGODB_COLLECTION = "paxinas"
 
         <section>
           <section>
-            <h2 class="left">Que pasa coas SPA?</h2>
-            <img src="assets/custom/images/fry.jpg" alt="" data-unbordered="true" />
+            <h3>Que pasa coas single-page application (SPA)?</h3>
+            <img src="assets/custom/images/fry.png" alt="" data-unbordered="true" />
           </section>
 
           <section>
@@ -851,14 +853,31 @@ docker run -i -t --rm -p 9001:9001 --name portia portia
           </p>
         </section>
 
-        <!-- FAINO TI MESMO -->
+        <!-- DEMO -->
         <section>
+          <section>
+            <h3>DEMO</h3>
+            <p>
+              A demo inclúe <strong>unha araña con Scrapy</strong> que recupera os artigos de
+              <a href="https://www.sitepoint.com/tag/drupal-8/">Drupal 8 de Sitepoint <i class="fa fa-external-link"></i></a> e posterior integración nunha instalación limpa de Drupal.
+            </p>
+            <img src="assets/custom/images/sitepoint-web.png" width="60%" alt="" data-unbordered="true" />
+          </section>
+
+          <section>
+            <h3>Probando a shell</h3>
+            <pre><code class="hljs bash" data-trim>
+scrapy shell https://www.sitepoint.com/tag/drupal-8/
+</code></pre>
+            <img src="assets/custom/images/firebug.png" alt="" data-unbordered="true" />
+          </section>
+
           <section data-background="#FFFFFF">
-            <h2>Faino ti mesmo</h2>
+            <h3>Show me your code</h3>
 
             <img src="assets/custom/images/Octocat.jpg" data-unbordered="true" alt="" width="20%" />
 
-            <p class="left fragment fade-in">
+            <p class="left">
               Esta presentación está dispoñible en:
               <a href="https://vifito.github.io/scrapy-for-drupal/">
                 vifito.github.io/scrapy-for-drupal/
@@ -878,19 +897,17 @@ docker run -i -t --rm -p 9001:9001 --name portia portia
 github.com/vifito/scrapy-for-drupal
 └── demo
     ├── module
-    │   └── scrapy
+    │   └── gdgourense
     └── scrapy
-        └── scrapy
+        └── gdgourense
               </code></pre>
           </section>
 
           <section>
-            <h2>Faino ti mesmo</h2>
+            <h3>Contido da Demo</h3>
 
             <p class="left">
-              A demo inclúe <strong>unha araña con Scrapy</strong> que recupera os artigos de
-              <a href="https://www.sitepoint.com/tag/drupal-8/">Drupal 8 de Sitepoint <i class="fa fa-external-link"></i></a>.
-              E un <strong>módulo de Drupal</strong> para insertar os artigos.
+              Un proxecto Scrapy cunha araña de tipo Basic e un <strong>módulo de Drupal</strong> cun comando de Drush para insertar os artigos.
             </p>
 
             <p class="left fragment fade-in">No directorio <code>scrapy</code> executar <code>launch.sh</code> ou:</p>
@@ -905,29 +922,30 @@ $ drush gdgourense-import drupal.json --assets=./assets
           </section>
 
           <section>
-            <h2>Carga de contidos</h2>
+            <h3>Mans a obra</h3>
             <p>A imaxe <code>wadmiraal/drupal</code> contén unha instalación de drupal con drush, drupal console, mailhog, ...</p>
 <pre><code class="hljs bash" data-trim>
 cd scrapy-for-drupal/demo
-
+# Arrincar un contedor
 docker run --name gdgourense -d \
     -v `pwd`/module:/var/www/modules/custom \
     -v `pwd`/scrapy:/var/www/scrapy \
-    -p 8022:22 -p 8080:80 wadmiraal/drupal
+    -p 8080:80 wadmiraal/drupal
 
+# Lanzamos Scrapy para cargar contidos
 cd scrapy
 ./launch.sh
 
+# Acceso ao contedor e executar drush
 docker exec -it gdgourense bash
-#ssh -l root -p 8022 localhost
-
 cd /var/www
 drush -y en gdgourense
-drush gdgourense-import drupal.log --assets=./assets
+#drush -y en file_entity
+drush gdgourense-import `pwd`/drupal.json --assets=`pwd`/assets
 </code></pre>
           </section>
       </section>
-      <!-- /FAINO TI MESMO -->
+      <!-- /DEMO -->
 
         <section>
           <section>

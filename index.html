@@ -924,8 +924,7 @@ $ drush gdgourense-import drupal.json --assets=./assets
           <section>
             <h3>Mans a obra</h3>
             <p>A imaxe <code>wadmiraal/drupal</code> contén unha instalación de drupal con drush, drupal console, mailhog, ...</p>
-<pre><code class="hljs bash" data-trim>
-cd scrapy-for-drupal/demo
+<pre><code class="hljs bash" data-trim>cd scrapy-for-drupal/demo
 # Arrincar un contedor
 docker run --name gdgourense -d \
     -v `pwd`/module:/var/www/modules/custom \
@@ -939,8 +938,7 @@ cd scrapy
 # Acceso ao contedor e executar drush
 docker exec -it gdgourense bash
 cd /var/www/scrapy
-drush -y en gdgourense
-#drush -y en file_entity
+drush -y en gdgourense file_entity
 drush gdgourense-import `pwd`/drupal.json --assets=`pwd`/assets
 </code></pre>
           </section>
